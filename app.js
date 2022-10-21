@@ -11,6 +11,7 @@ app.use(cors());
 //routes
 const hiringManagerRoute = require('./routes/hiringManager.route')
 
+// route calling
 app.use("/manager", hiringManagerRoute)
 
 app.get("/", (req, res) => {

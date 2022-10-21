@@ -17,3 +17,20 @@ exports.createHiringManager = async (req, res) => {
         })
     }
 }
+
+exports.getHiringManager = async (req, res, next) => {
+    try {
+        const manager = await getHiringManagerService();
+        res.status(200).json({
+            stauts: "success",
+            massage: "successfully get data for Hiring Manager",
+            data: manager
+        })
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Data is not found",
+            error: error.message
+        })
+    }
+}
