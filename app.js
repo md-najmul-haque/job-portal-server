@@ -8,6 +8,11 @@ app.use(express.json());
 app.use(cors());
 
 
+//routes
+const hiringManagerRoute = require('./routes/hiringManager.route')
+
+app.use("/manager", hiringManagerRoute)
+
 app.get("/", (req, res) => {
     res.send("Route is working!");
 });
