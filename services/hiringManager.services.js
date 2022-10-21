@@ -1,4 +1,4 @@
-const HiringManager = require("../model/hiringManagerSchema");
+const HiringManager = require("../models/hiringManagerSchema");
 
 
 exports.createHiringManagerService = async (data) => {
