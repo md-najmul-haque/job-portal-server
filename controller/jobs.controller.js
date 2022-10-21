@@ -61,3 +61,27 @@ exports.getJobById = async (req, res, next) => {
         })
     }
 }
+
+exports.updateJob = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        //create method
+        const result = await updateJobService(id, req.body);
+        if (!result.modifiedCount) {
+            return res.status(400).json({
+                stauts: "fail",
+                error: "Could not find job with this id"
+            })
+        }
+        res.status(200).json({
+            stauts: "success",
+            massage: "successfully update the jobs",
+        })
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Could not update",
+            error: error.message
+        })
+    }
+}
