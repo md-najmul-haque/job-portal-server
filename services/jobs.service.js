@@ -10,3 +10,8 @@ exports.getJobsService = async () => {
         .populate("hiringManager.id")
     return jobs;
 }
+
+exports.getJobByIdService = async (id) => {
+    const job = await Jobs.findOne({ _id: id })
+    return job;
+}

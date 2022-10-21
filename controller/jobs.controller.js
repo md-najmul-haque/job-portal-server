@@ -1,4 +1,4 @@
-const { createJobsService } = require("../services/jobs.Service")
+const { createJobsService, getJobsService, getJobByIdService } = require("../services/jobs.Service")
 
 
 exports.createJobs = async (req, res, next) => {
@@ -32,6 +32,31 @@ exports.getJobs = async (req, res, next) => {
         res.status(400).json({
             stauts: "fail",
             message: "Data is not found",
+            error: error.message
+        })
+    }
+}
+
+exports.getJobById = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        //create method
+        const job = await getJobByIdService(id);
+        if (!job) {
+            return res.status(400).json({
+                stauts: "fail",
+                error: "Could not finds a Job with this id"
+            })
+        }
+        res.status(200).json({
+            stauts: "success",
+            massage: "successfully get job this ID",
+            data: job
+        })
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Job not find this ID",
             error: error.message
         })
     }
