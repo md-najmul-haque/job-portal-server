@@ -1,17 +1,17 @@
-const { createHiringManagerService } = require("../services/hiringManager.services")
+const { createHiringManagerService, getHiringManagerService, } = require("../services/hiringManager.services")
 
 exports.createHiringManager = async (req, res) => {
     try {
         const result = await createHiringManagerService(req.body)
         res.status(200).json({
-            stauts: "success",
-            massage: "successfully create a Jobs",
+            status: "success",
+            massage: "successfully create hiring manager successfully",
             data: result
         })
 
     } catch (error) {
         res.status(400).json({
-            stauts: "fail",
+            status: "fail",
             message: "Data is not inserted",
             error: error.messages
         })
