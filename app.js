@@ -12,12 +12,13 @@ app.use(cors());
 const jobsRoute = require('./routes/jobs.route')
 const hiringManagerRoute = require('./routes/hiringManager.route')
 const userRoute = require("./routes/user.route")
+const candidateRoute = require("./routes/candidate.route")
 
 // route calling
 app.use("/", jobsRoute)
 app.use("/manager", hiringManagerRoute)
 app.use("/", userRoute)
-
+app.use("/", candidateRoute)
 
 app.get("/", (req, res) => {
     res.send("Route is working!");
